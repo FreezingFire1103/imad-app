@@ -9,12 +9,66 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var articles = {
+    'article-one': {
+        title : 'Article One',
+        date : 'Sep 2, 2017',
+        content : `<p>
+                This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. 
+            </p>
+            <p>
+                This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. 
+            </p>
+            <p>
+                This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. This is the content of article one. 
+            </p>`
+    },
+    'article-two': {
+        title : 'Article Two',
+        date : 'Sep 1, 2017',
+        content : '<p> This is the content of the second article.</p>'
+    },
+    'article-three': {
+        title : 'Article Three',
+        date : 'Sep 0, 2017',
+        content : '<p> This is the content of the third article.</p>'
+    }
+}
+
+function createArticle(data){
+    var title = data.title;
+    var date = data.date;
+    var content = data.content;
+    var htmlTemplate = `
+    <html>
+        <head>
+            <title>
+                ${title} | JM
+            </title>
+            <meta name = "viewport" content = "width=device-width, initial-scale=1"/>
+        </head>
+        <body>
+            <div>
+                <a href = '/'>Home</a>
+            </div>
+            <hr/>
+            <h3>${title}</h3>
+            <div>
+                ${date}
+            </div>
+            <div class = "container">
+                ${content}
+            </div>
+        </body>
+    </html>`
+}
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
 app.get('/article-one', function(req,res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+   res.send(createArticle(articleName));
 });
 
 app.get('/article-two', function(req,res) {
