@@ -61,6 +61,7 @@ function createArticle(data){
             </div>
         </body>
     </html>`
+    return htmlTemplate;
 }
 
 app.get('/ui/style.css', function (req, res) {
@@ -68,7 +69,7 @@ app.get('/ui/style.css', function (req, res) {
 });
 
 app.get('/article-one', function(req,res) {
-   res.send(createArticle(articleName));
+   res.send(createArticle(articles['article-one']));
 });
 
 app.get('/article-two', function(req,res) {
