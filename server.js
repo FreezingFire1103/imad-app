@@ -73,11 +73,11 @@ app.get('/article-one', function(req,res) {
 });
 
 app.get('/article-two', function(req,res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+   res.send(createArticle(articles['article-two']));
 });
 
 app.get('/article-three', function(req,res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+   res.send(createArticle(articles['article-three']));
 });
 
 app.get('/ui/madi.png', function (req, res) {
